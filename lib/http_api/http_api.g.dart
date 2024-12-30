@@ -34,7 +34,7 @@ class _ApiClient implements ApiClient {
     )
         .compose(
           _dio.options,
-          '/odp',
+          '/odp/',
           queryParameters: queryParameters,
           data: _data,
         )

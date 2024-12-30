@@ -28,19 +28,22 @@ abstract class ApiClient {
     final baseOptions = BaseOptions(
       connectTimeout: const Duration(seconds: 120),
       receiveTimeout: const Duration(seconds: 120),
+      headers: {
+        'content-type' : 'application/json',
+      }
     );
 
     Dio? dio = Dio();
     dio.options = baseOptions;
     dio.interceptors.clear();
-    dio.interceptors.add(RequestInterceptor());
+    dio.interceptors.add(RequestInterceptor(apiKey: keyAPI));
     if(!kReleaseMode) {
       dio.interceptors.add(prettyLogDio);
     }
     
-    return _ApiClient(dio, baseUrl: apiBaseUrl);
+    return _ApiClient(dio, baseUrl: apiBaseUrl,);
   }
 
-  @GET('/odp')
+  @GET('/odp/')
   Future<BaseResponse<List<OdpModel>>> getOdp();
 }
