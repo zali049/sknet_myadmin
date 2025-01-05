@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
+import 'package:sknet_myadmin/http_api/base_response.dart';
 import 'package:sknet_myadmin/http_api/http_api.dart';
 import 'package:sknet_myadmin/models/odp_model.dart';
 
@@ -21,5 +24,14 @@ class OdpService {
       }
     }
     return listOdp;
+  }
+
+  Future<bool> createOdps(OdpModel model) async {
+    try {
+      final res = await _apiClient.addOdp(model);
+      return res.status ?? false;
+    } catch (e) {
+      return false;
+    }
   }
 }

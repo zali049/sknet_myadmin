@@ -46,4 +46,8 @@ abstract class ApiClient {
 
   @GET('/odp/')
   Future<BaseResponse<List<OdpModel>>> getOdp();
+
+
+  @POST('/odp/')
+  Future<BaseResponse> addOdp(@Body() OdpModel model);
 }

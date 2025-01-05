@@ -2,7 +2,10 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'odp_model.g.dart';
 
-@JsonSerializable(createFactory: true)
+@JsonSerializable(
+  createFactory: true,
+  createToJson: true,
+)
 class OdpModel {
   final String? id;
   @JsonKey(name: 'kode_odp')
@@ -30,26 +33,26 @@ class OdpModel {
   final String? splitterOut;
   final String? keterangan;
 
-  factory OdpModel.fromJson(Map<String, dynamic> json) => _$OdpModelFromJson(json); 
+  factory OdpModel.fromJson(Map<String, dynamic> json) =>
+      _$OdpModelFromJson(json);
 
   OdpModel({
-     this.id,
-     this.kodeOdp,
-     this.namaOdp,
-     this.addressOdp,
-     this.longitude,
-     this.latitude,
-     this.noFeeder,
-     this.tube,
-     this.core,
-     this.feederOut,
-     this.ratioSplitter,
-     this.ratioSplitRed,
-     this.ratioSplitBlue,
-     this.splitter,
-     this.splitterOut,
-     this.keterangan,
-
+    this.id,
+    this.kodeOdp,
+    this.namaOdp,
+    this.addressOdp,
+    this.longitude,
+    this.latitude,
+    this.noFeeder,
+    this.tube,
+    this.core,
+    this.feederOut,
+    this.ratioSplitter,
+    this.ratioSplitRed,
+    this.ratioSplitBlue,
+    this.splitter,
+    this.splitterOut,
+    this.keterangan,
   });
 
   Map<String, dynamic> toJson() => _$OdpModelToJson(this);

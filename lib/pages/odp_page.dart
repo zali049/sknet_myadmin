@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:sknet_myadmin/controllers/odp_controller.dart';
+import 'package:sknet_myadmin/pages/add_odp.dart';
 
 class OdpPage extends StatelessWidget {
   OdpPage({super.key});
@@ -24,7 +25,8 @@ class OdpPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        Get.toNamed('/odp_detail', arguments: odpController.odps[index]);
+                        Get.toNamed('/odp_detail',
+                            arguments: odpController.odps[index]);
                       },
                       child: Card(
                         child: SizedBox(
@@ -43,8 +45,8 @@ class OdpPage extends StatelessWidget {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Text(odpController.odps[index].namaOdp!),
-                                Text(odpController.odps[index].noFeeder!)
+                                Text(odpController.odps[index].namaOdp ?? ""),
+                                Text(odpController.odps[index].noFeeder ?? "")
                               ],
                             ),
                           ),
@@ -54,6 +56,22 @@ class OdpPage extends StatelessWidget {
                   },
                 ),
               ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            useSafeArea: true,
+            isScrollControlled: true,
+            context: context,
+            builder: (context) {
+              return SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: AddOdp(),
+              );
+            },
+          );
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
