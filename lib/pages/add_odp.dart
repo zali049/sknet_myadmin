@@ -9,7 +9,7 @@ class AddOdp extends StatelessWidget {
     super.key,
   });
 
-  AddOdpController controller = Get.put(AddOdpController());
+  final AddOdpController controller = Get.put(AddOdpController());
   
   @override
   Widget build(BuildContext context) {
