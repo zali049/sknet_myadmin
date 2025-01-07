@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sknet_myadmin/controllers/odp_controller.dart';
 import 'package:sknet_myadmin/models/odp_model.dart';
 import 'package:sknet_myadmin/repo/odp_repo.dart';
 
 class AddOdpController extends GetxController {
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
   @override
   void dispose() {
     super.dispose();
@@ -30,7 +24,7 @@ class AddOdpController extends GetxController {
     cKeterangan.dispose();
   }
 
-  OdpController controller = Get.put(OdpController());
+  //OdpController controller = Get.find();
 
   final OdpService _odpService = OdpService();
 
@@ -71,8 +65,7 @@ class AddOdpController extends GetxController {
       final response = await _odpService.createOdps(request);
       if (response == true) {
         Get.snackbar("Seccess", 'Data berhasil disimpan');
-        Get.offAllNamed("/odp_page");
-        controller.getOdpsAll();
+        // controller.getOdpsAll();
       } else {
         Get.snackbar("Gagal", 'Data Gagal disimpan');
       }

@@ -5,7 +5,8 @@ import 'package:sknet_myadmin/pages/add_odp.dart';
 
 class OdpPage extends StatelessWidget {
   OdpPage({super.key});
-  final OdpController odpController = Get.find();
+
+  final odpController = Get.find<OdpController>();
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +63,14 @@ class OdpPage extends StatelessWidget {
           showModalBottomSheet(
             useSafeArea: true,
             isScrollControlled: true,
+            isDismissible: true,
             context: context,
             builder: (context) {
               return SizedBox(
                 height: MediaQuery.of(context).size.height,
-                child: AddOdp(),
+                child: AddOdp(
+                  callback: () => Get.offAllNamed('odp_page'),
+                ),
               );
             },
           );

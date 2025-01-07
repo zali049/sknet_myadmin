@@ -7,10 +7,13 @@ import 'package:sknet_myadmin/pages/components/custom_text_field.dart';
 class AddOdp extends StatelessWidget {
   AddOdp({
     super.key,
+    required this.callback,
   });
 
-  final AddOdpController controller = Get.put(AddOdpController());
-  
+  final VoidCallback callback;
+
+  final controller = Get.find<AddOdpController>();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -35,7 +38,7 @@ class AddOdp extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     IconButton(
-                      onPressed: () => Get.offAllNamed('/odp_page'),
+                      onPressed: callback,
                       icon: const Icon(Icons.arrow_back),
                     ),
                     const SizedBox(
@@ -194,6 +197,7 @@ class AddOdp extends StatelessWidget {
                         label: 'Simpan',
                         action: () {
                           controller.sendDataOdp();
+                          Get.offAndToNamed('odp_page');
                         },
                       ),
                     )
