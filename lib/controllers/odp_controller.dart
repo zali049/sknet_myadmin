@@ -28,4 +28,10 @@ class OdpController extends GetxController {
       _isLoading.value = false;
     }
   }
+
+  Future<void> handleRefresh() async {
+    await Future.delayed(const Duration(seconds: 2));
+    // Update the list of items and refresh the UI
+    getOdpsAll();
+  }
 }

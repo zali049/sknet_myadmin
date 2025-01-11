@@ -34,9 +34,13 @@ dependencies:
   flash: ^3.1.1
   flutter:
     sdk: flutter
+  flutter_map: ^7.0.2
+  flutter_map_location_marker: ^9.1.1
+  geolocator: ^13.0.2
   get: ^4.6.6
   json_annotation: ^4.9.0
   json_serializable: ^6.9.0
+  latlong2: ^0.9.1
   pretty_dio_logger: ^1.4.0
   retrofit: ^4.4.1
 

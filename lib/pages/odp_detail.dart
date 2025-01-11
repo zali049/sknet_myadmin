@@ -22,7 +22,9 @@ class OdpDetailPage extends StatelessWidget {
           children: [
             Text("Nama Odp : ${odp.namaOdp}"),
             Text("Kode ODP : ${odp.kodeOdp}"),
-            Text("Alamat : ${odp.addressOdp}"),
+            Text("Alamat : ${odp.addressOdp}"),            
+            Text("Latitude : ${odp.latitude}"),            
+            Text("Longitude : ${odp.longitude}"),            
             Text("Core : ${odp.core}"),
             Text("No Feeder : ${odp.noFeeder}"),
             Text("Tube : ${odp.tube}"), 
@@ -31,9 +33,7 @@ class OdpDetailPage extends StatelessWidget {
             Text("Ratio Out Red : ${odp.ratioSplitRed}.dBm"),
             Text("Splitter : ${odp.splitter}"),
             Text("Splitter out : ${odp.splitterOut}.dBm"),
-            Text("Keterangan : ${odp.keterangan}"),
-        
-           
+            Text("Keterangan : ${odp.keterangan}")
           ],
         ),
       ),

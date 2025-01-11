@@ -9,6 +9,7 @@ class CustomTextField extends StatelessWidget {
     this.inputAction,
     this.line,
     this.alignLabel,
+    this.validator,
   });
 
   final String label;
@@ -17,6 +18,10 @@ class CustomTextField extends StatelessWidget {
   final TextInputAction? inputAction;
   final int? line;
   final bool? alignLabel;
+  final FormFieldValidator<String>? validator;
+
+
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +29,7 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       keyboardType: inputType,
       textInputAction: inputAction,
+      validator:  validator,
       maxLines: line,
       decoration: InputDecoration(
         label: Text(label),

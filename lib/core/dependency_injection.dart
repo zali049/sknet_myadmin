@@ -10,6 +10,9 @@ class DependencyInjection {
       () => OdpController(),
       fenix: true,
     );
-    Get.lazyPut(() => AddOdpController(),);
+    Get.lazyPut(
+      () => AddOdpController(),
+      fenix: true,
+    );
   }
 }
