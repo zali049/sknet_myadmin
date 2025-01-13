@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:sknet_myadmin/controllers/odp_controller.dart';
 import 'package:sknet_myadmin/pages/add_odp.dart';
+import 'package:sknet_myadmin/pages/components/custom_button.dart';
 
 class OdpPage extends StatelessWidget {
   OdpPage({super.key});
@@ -12,7 +13,8 @@ class OdpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
+        title: const Padding(
+          padding: EdgeInsets.only(left: 100),
           child: Text('ODP'),
         ),
       ),
@@ -31,9 +33,54 @@ class OdpPage extends StatelessWidget {
                           Get.toNamed('/odp_detail',
                               arguments: odpController.odps[index]);
                         },
+                        onLongPress: () {
+                          Get.dialog(Dialog(
+                            child: Container(
+                              width: double.infinity,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text("Delete Data"),
+                                    const SizedBox(height: 5),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        CustomButton(
+                                          action: () => Get.back(),
+                                          label: "No",
+                                          colorsBackground: Colors.blue,
+                                        ),
+                                        const SizedBox(width: 10),
+                                        CustomButton(
+                                          action: () {
+                                            String? value =
+                                                odpController.odps[index].id;
+                                            int valueIndex =
+                                                int.parse(value ?? "0");
+                                            odpController
+                                                .deleteItemOdp(valueIndex);
+                                            Get.back();
+                                          },
+                                          label: "Yes",
+                                          colorsBackground: Colors.red,
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ));
+                        },
                         child: Card(
                           child: SizedBox(
-                            height: 100,
+                            height: 90,
                             width: double.infinity,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -44,12 +91,17 @@ class OdpPage extends StatelessWidget {
                                   Text(
                                     odpController.odps[index].namaOdp ?? "",
                                     style: const TextStyle(
-                                      fontSize: 25,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  Text(odpController.odps[index].kodeOdp ?? ""),
-                                  Text(odpController.odps[index].noFeeder ?? "")
+                                  Text(
+                                    odpController.odps[index].kodeOdp ?? "",
+                                    style: const TextStyle(
+                                        fontSize: 10, color: Colors.blue),
+                                  ),
+                                  Text(odpController.odps[index].addressOdp ??
+                                      "")
                                 ],
                               ),
                             ),

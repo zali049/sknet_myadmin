@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sknet_myadmin/pages/customer.dart';
 import 'package:sknet_myadmin/pages/odp_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,9 +15,17 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: ElevatedButton(
-            onPressed: () => Get.to(OdpPage()),
-            child: const Text("Page Odp")),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+                onPressed: () => Get.to(OdpPage()),
+                child: const Text("Page Odp")),
+            ElevatedButton(
+                onPressed: () => Get.to(CustomerPage()),
+                child: const Text("Page Customer")),
+          ],
+        ),
       ),
     );
   }

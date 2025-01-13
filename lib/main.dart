@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData.light(),
-      initialRoute: '/odp_page',
+      initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => const HomePage()),
         GetPage(

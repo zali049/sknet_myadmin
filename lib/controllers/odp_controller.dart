@@ -7,10 +7,8 @@ class OdpController extends GetxController {
   final _listOdp = <OdpModel>[].obs;
   final _isLoading = false.obs;
 
-
   List<OdpModel> get odps => _listOdp;
   bool get isLoading => _isLoading.value;
-
 
   @override
   onInit() {
@@ -33,5 +31,14 @@ class OdpController extends GetxController {
     await Future.delayed(const Duration(seconds: 2));
     // Update the list of items and refresh the UI
     getOdpsAll();
+  }
+
+  Future<void> deleteItemOdp(int id) async {
+    try {
+      await _odpService.deleteOdps(id);
+      getOdpsAll();
+    } catch (e) {
+      //
+    }
   }
 }

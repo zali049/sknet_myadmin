@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 import 'package:sknet_myadmin/http_api/http_api.dart';
 import 'package:sknet_myadmin/models/odp_model.dart';
 
@@ -29,6 +30,15 @@ class OdpService {
       return res.status ?? false;
     } catch (e) {
       return false;
+    }
+  }
+
+  Future<void> deleteOdps(int id) async {
+    try {
+      await _apiClient.deleteOdp(id);
+      Get.snackbar('Sukses', 'User berhasil dihapus');
+    } catch (e) {
+      Get.snackbar('Gagal', 'Gagal menghapus user');
     }
   }
 }

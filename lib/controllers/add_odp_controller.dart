@@ -52,7 +52,6 @@ class AddOdpController extends GetxController {
     } else {
       return 'form tidak boleh kosong';
     }
-    return null;
   }
 
   Future<void> sendDataOdp() async {

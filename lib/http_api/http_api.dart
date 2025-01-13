@@ -13,7 +13,6 @@ part 'http_api.g.dart';
 @RestApi()
 abstract class ApiClient {
   factory ApiClient() {
-
     //displaying API LOG
     final prettyLogDio = PrettyDioLogger(
       request: true,
@@ -26,28 +25,32 @@ abstract class ApiClient {
     );
 
     final baseOptions = BaseOptions(
-      connectTimeout: const Duration(seconds: 120),
-      receiveTimeout: const Duration(seconds: 120),
-      headers: {
-        'content-type' : 'application/json',
-      }
-    );
+        connectTimeout: const Duration(seconds: 120),
+        receiveTimeout: const Duration(seconds: 120),
+        headers: {
+          'content-type': 'application/json',
+        });
 
     Dio? dio = Dio();
     dio.options = baseOptions;
     dio.interceptors.clear();
     dio.interceptors.add(RequestInterceptor(apiKey: keyAPI));
-    if(!kReleaseMode) {
+    if (!kReleaseMode) {
       dio.interceptors.add(prettyLogDio);
     }
-    
-    return _ApiClient(dio, baseUrl: apiBaseUrl,);
+
+    return _ApiClient(
+      dio,
+      baseUrl: apiBaseUrl,
+    );
   }
 
   @GET('/odp/')
   Future<BaseResponse<List<OdpModel>>> getOdp();
 
-
   @POST('/odp/')
   Future<BaseResponse> addOdp(@Body() OdpModel model);
+
+  @DELETE('/odp/{id}')
+  Future<void> deleteOdp(@Path('id') int id);
 }
