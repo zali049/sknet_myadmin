@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:sknet_myadmin/controllers/odp_controller.dart';
-import 'package:sknet_myadmin/pages/add_odp.dart';
-import 'package:sknet_myadmin/pages/components/custom_button.dart';
+import 'package:sknet_myadmin/view/odp_pages/controller/odp_controller.dart';
+import 'package:sknet_myadmin/view/odp_pages/page/add_odp.dart';
+import 'package:sknet_myadmin/view/widgets/custom_button.dart';
+
+import '../../../routes/app_name.dart';
 
 class OdpPage extends StatelessWidget {
   OdpPage({super.key});
@@ -19,25 +21,25 @@ class OdpPage extends StatelessWidget {
         ),
       ),
       body: Obx(
-        () => odpController.isLoading
+        () => odpController.isLoading.value
             ? const Center(child: CircularProgressIndicator())
             : Padding(
                 padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
                 child: RefreshIndicator(
                   onRefresh: odpController.handleRefresh,
                   child: ListView.builder(
-                    itemCount: odpController.odps.length,
+                    itemCount: odpController.listOdp.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          Get.toNamed('/odp_detail',
-                              arguments: odpController.odps[index]);
+                          Get.toNamed(RouteName.ODP_DETAIL_PAGE,
+                              arguments: odpController.listOdp[index]);
                         },
                         onLongPress: () {
                           Get.dialog(Dialog(
                             child: Container(
                               width: double.infinity,
-                              height: 100,
+                              height: 150,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10)),
                               child: Padding(
@@ -45,7 +47,20 @@ class OdpPage extends StatelessWidget {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const Text("Delete Data"),
+                                    Center(
+                                      child: Column(
+                                        children: [
+                                          const Text(
+                                            "Delete",
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                              "${odpController.listOdp[index].namaOdp}"),
+                                        ],
+                                      ),
+                                    ),
                                     const SizedBox(height: 5),
                                     Row(
                                       mainAxisAlignment:
@@ -60,7 +75,7 @@ class OdpPage extends StatelessWidget {
                                         CustomButton(
                                           action: () {
                                             String? value =
-                                                odpController.odps[index].id;
+                                                odpController.listOdp[index].id;
                                             int valueIndex =
                                                 int.parse(value ?? "0");
                                             odpController
@@ -89,18 +104,18 @@ class OdpPage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    odpController.odps[index].namaOdp ?? "",
+                                    odpController.listOdp[index].namaOdp ?? "",
                                     style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Text(
-                                    odpController.odps[index].kodeOdp ?? "",
+                                    odpController.listOdp[index].kodeOdp ?? "",
                                     style: const TextStyle(
                                         fontSize: 10, color: Colors.blue),
                                   ),
-                                  Text(odpController.odps[index].addressOdp ??
+                                  Text(odpController.listOdp[index].addressOdp ??
                                       "")
                                 ],
                               ),

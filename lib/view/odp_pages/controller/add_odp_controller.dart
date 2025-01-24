@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sknet_myadmin/controllers/odp_controller.dart';
-import 'package:sknet_myadmin/models/odp_model.dart';
-import 'package:sknet_myadmin/repo/odp_repo.dart';
+import 'package:sknet_myadmin/view/odp_pages/controller/odp_controller.dart';
+import 'package:sknet_myadmin/models/odp/odp_model.dart';
+import 'package:sknet_myadmin/repository/odp_repo.dart';
 
 class AddOdpController extends GetxController {
+
+  
   @override
   void dispose() {
     super.dispose();
@@ -46,8 +48,8 @@ class AddOdpController extends GetxController {
   final TextEditingController cSplitOut = TextEditingController();
   final TextEditingController cKeterangan = TextEditingController();
 
-   String? validatorForm(String? value){
-    if (value!.isNotEmpty ){
+  String? validatorForm(String? value) {
+    if (value!.isNotEmpty) {
       return null;
     } else {
       return 'form tidak boleh kosong';
@@ -55,7 +57,7 @@ class AddOdpController extends GetxController {
   }
 
   Future<void> sendDataOdp() async {
-    var request = OdpModel(
+    var data = OdpModel(
         namaOdp: cNama.text,
         kodeOdp: cKode.text,
         addressOdp: cAlamat.text,
@@ -72,7 +74,7 @@ class AddOdpController extends GetxController {
         splitterOut: cSplitOut.text,
         keterangan: cKeterangan.text);
     try {
-      final response = await _odpService.createOdps(request);
+      final response = await _odpService.createOdps(data);
       if (response == true) {
         Get.snackbar("Seccess", 'Data berhasil disimpan');
         Get.delete<AddOdpController>();
@@ -83,5 +85,9 @@ class AddOdpController extends GetxController {
     } catch (e) {
       Get.snackbar('Error', e.toString());
     }
+  }
+
+  Future<bool?> updateData(int id, OdpModel model) async {
+    return await _odpService.updateOdp(id, model);
   }
 }
