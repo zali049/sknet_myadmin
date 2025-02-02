@@ -4,9 +4,9 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:sknet_myadmin/models/odp/odp_model.dart';
-import 'package:sknet_myadmin/view/odp_pages/controller/odp_controller.dart';
-import 'package:sknet_myadmin/view/widgets/custom_card.dart';
-import 'package:sknet_myadmin/view/widgets/custom_maps.dart';
+import 'package:sknet_myadmin/views/odp_pages/controller/odp_controller.dart';
+import 'package:sknet_myadmin/views/widgets/custom_card.dart';
+import 'package:sknet_myadmin/views/widgets/custom_maps.dart';
 
 import '../../../routes/app_name.dart';
 

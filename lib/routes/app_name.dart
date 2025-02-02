@@ -7,4 +7,5 @@ abstract class RouteName {
   static const ODP_DETAIL_PAGE = '/odp_detail_page';
   static const ODP_EDIT_PAGE = '/odp_edit_page';
   static const ODP_ADD_PAGE = '/odp_add_page';
+  static const CUST_PAGE = '/cust_page';
 }

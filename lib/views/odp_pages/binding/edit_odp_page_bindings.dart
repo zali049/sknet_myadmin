@@ -1,6 +1,6 @@
 
 import 'package:get/get.dart';
-import 'package:sknet_myadmin/view/odp_pages/controller/edit_odp_controller.dart';
+import 'package:sknet_myadmin/views/odp_pages/controller/edit_odp_controller.dart';
 
 class EditOdpPageBindings extends Bindings{
   @override

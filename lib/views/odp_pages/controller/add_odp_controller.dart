@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sknet_myadmin/view/odp_pages/controller/odp_controller.dart';
+import 'package:sknet_myadmin/views/odp_pages/controller/odp_controller.dart';
 import 'package:sknet_myadmin/models/odp/odp_model.dart';
 import 'package:sknet_myadmin/repository/odp_repo.dart';
 
-class EditOdpController extends GetxController {
-  @override
-  void onInit() {
-    super.onInit();
-    valueForm();
-  }
+class AddOdpController extends GetxController {
 
+  
   @override
   void dispose() {
     super.dispose();
@@ -32,7 +28,6 @@ class EditOdpController extends GetxController {
   }
 
   final OdpController controller = Get.find();
-  final Rx<OdpModel> odp = Get.arguments;
 
   final OdpService _odpService = OdpService();
   final formKey = GlobalKey<FormState>();
@@ -61,45 +56,8 @@ class EditOdpController extends GetxController {
     }
   }
 
-  // Future<void> sendDataOdp() async {
-  //
-  //   try {
-  //     final response = await _odpService.createOdps(data);
-  //     if (response == true) {
-  //       Get.snackbar("Seccess", 'Data berhasil disimpan');
-  //       Get.delete<AddOdpController>();
-  //       controller.getOdpsAll();
-  //     } else {
-  //       Get.snackbar("Gagal", 'Data Gagal disimpan');
-  //     }
-  //   } catch (e) {
-  //     Get.snackbar('Error', e.toString());
-  //   }
-  // }
-
-  OdpModel valueForm() {
-    
-    cNama.text = odp.value.namaOdp ?? "";
-    cKode.text = odp.value.kodeOdp ?? "";
-    cAlamat.text = odp.value.addressOdp ?? "";
-    cLong.text = odp.value.longitude ?? "";
-    cLat.text = odp.value.latitude ?? "";
-    cNoFeeder.text = odp.value.noFeeder ?? "";
-    cFeederOut.text = odp.value.feederOut ?? "";
-    cTube.text = odp.value.tube ?? "";
-    cCore.text = odp.value.core ?? "";
-    cRtoSplitter.text = odp.value.ratioSplitter ?? "";
-    cRedOut.text = odp.value.ratioSplitRed ?? "";
-    cBlueOut.text = odp.value.ratioSplitBlue ?? "";
-    cSplitter.text = odp.value.splitter ?? "";
-    cSplitOut.text = odp.value.splitterOut ?? "";
-    cKeterangan.text = odp.value.keterangan ?? "";
-    return odp.value;
-  }
-
-  Future<bool?> updateData(int id) async {
+  Future<void> sendDataOdp() async {
     var data = OdpModel(
-        id: id.toString(),
         namaOdp: cNama.text,
         kodeOdp: cKode.text,
         addressOdp: cAlamat.text,
@@ -115,16 +73,21 @@ class EditOdpController extends GetxController {
         splitter: cSplitter.text,
         splitterOut: cSplitOut.text,
         keterangan: cKeterangan.text);
-    final response = await _odpService.updateOdp(id, data);
     try {
+      final response = await _odpService.createOdps(data);
       if (response == true) {
+        Get.snackbar("Seccess", 'Data berhasil disimpan');
+        Get.delete<AddOdpController>();
         controller.getOdpsAll();
       } else {
-        _odpService.message = response.toString();
+        Get.snackbar("Gagal", 'Data Gagal disimpan');
       }
     } catch (e) {
-      print(e);
+      Get.snackbar('Error', e.toString());
     }
-    return response;
+  }
+
+  Future<bool?> updateData(int id, OdpModel model) async {
+    return await _odpService.updateOdp(id, model);
   }
 }

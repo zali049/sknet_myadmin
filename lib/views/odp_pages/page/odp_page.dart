@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:sknet_myadmin/view/odp_pages/controller/odp_controller.dart';
-import 'package:sknet_myadmin/view/odp_pages/page/add_odp.dart';
-import 'package:sknet_myadmin/view/widgets/custom_button.dart';
+import 'package:sknet_myadmin/views/odp_pages/controller/odp_controller.dart';
+import 'package:sknet_myadmin/views/odp_pages/page/add_odp.dart';
+import 'package:sknet_myadmin/views/widgets/custom_button.dart';
 
 import '../../../routes/app_name.dart';
 

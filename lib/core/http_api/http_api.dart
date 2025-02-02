@@ -7,7 +7,7 @@ import 'package:sknet_myadmin/core/http_api/request_interceptor.dart';
 import 'package:sknet_myadmin/models/customer/customer_model.dart';
 import 'package:sknet_myadmin/models/odp/odp_model.dart';
 import 'package:sknet_myadmin/models/workorder/workorder_model.dart';
-import 'package:sknet_myadmin/utils/constans.dart';
+import 'package:sknet_myadmin/app/utils/constans.dart';
 
 part 'http_api.g.dart';
 

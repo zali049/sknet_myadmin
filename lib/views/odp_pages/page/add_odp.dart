@@ -5,10 +5,10 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:sknet_myadmin/view/odp_pages/controller/add_odp_controller.dart';
-import 'package:sknet_myadmin/view/widgets/custom_button.dart';
-import 'package:sknet_myadmin/view/widgets/custom_maps.dart';
-import 'package:sknet_myadmin/view/widgets/custom_text_field.dart';
+import 'package:sknet_myadmin/views/odp_pages/controller/add_odp_controller.dart';
+import 'package:sknet_myadmin/views/widgets/custom_button.dart';
+import 'package:sknet_myadmin/views/widgets/custom_maps.dart';
+import 'package:sknet_myadmin/views/widgets/custom_text_field.dart';
 
 class AddOdp extends StatefulWidget {
   const AddOdp({

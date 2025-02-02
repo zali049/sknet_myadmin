@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sknet_myadmin/utils/constans.dart';
+import 'package:sknet_myadmin/app/utils/constans.dart';
 
 class CustomBottomNavbar extends StatelessWidget {
   const CustomBottomNavbar({super.key, required this.children, this.height, });

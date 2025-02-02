@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
-import 'package:sknet_myadmin/utils/logger.dart';
+import 'package:sknet_myadmin/app/utils/logger.dart';
 
 class ErrorHandler implements Exception {
   RxString _errorMessage = ''.obs;
